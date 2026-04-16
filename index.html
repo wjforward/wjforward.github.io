@@ -225,6 +225,56 @@
             font-size: 1rem;
             vertical-align: middle;
         }
+        /* 双语区块样式 */
+        .bilingual-block {
+            margin-bottom: 1.8rem;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 1rem;
+        }
+        .bilingual-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .en-section {
+            color: #0f172a;
+            margin-bottom: 0.6rem;
+        }
+        .zh-section {
+            color: #334155;
+            font-size: 0.95rem;
+            border-left: 3px solid #cbd5e1;
+            padding-left: 1rem;
+            margin-top: 0.4rem;
+        }
+        .sub-en {
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        .sub-zh {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        .inline-bilingual {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        .inline-en {
+            font-weight: 600;
+        }
+        .inline-zh {
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+        .grid-bilingual-item {
+            background: #fefefe;
+            border-radius: 20px;
+            padding: 1rem 1.2rem;
+        }
     </style>
 </head>
 <body>
@@ -235,199 +285,237 @@
     <div class="nav-container">
         <div class="logo">Jie Wang · 王劼</div>
         <ul class="nav-links">
-            <li><a href="#about">关于 | About</a></li>
-            <li><a href="#education">教育 | Edu</a></li>
-            <li><a href="#projects">研究 | Research</a></li>
-            <li><a href="#internship">实习 | Intern</a></li>
-            <li><a href="#skills">技能 | Skills</a></li>
-            <li><a href="#code">代码 | Gitee</a></li>
+            <li><a href="#about">About / 关于</a></li>
+            <li><a href="#education">Education / 教育</a></li>
+            <li><a href="#projects">Research / 研究</a></li>
+            <li><a href="#internship">Intern / 实习</a></li>
+            <li><a href="#skills">Skills / 技能</a></li>
+            <li><a href="#code">Gitee / 代码</a></li>
         </ul>
-        <div class="lang-badge">EN / 中文</div>
+        <div class="lang-badge">EN/中文</div>
     </div>
 </nav>
 
 <div class="container">
-    <!-- Hero 头部区域 -->
+    <!-- Hero 头部区域: 中英文融合，英文为主导 -->
     <div class="card hero" id="about">
         <div style="display: flex; flex-direction: column; align-items: center;">
-            <!-- 头像占位符 (基于个人信息可放置首字母或简约头像) -->
             <div style="width: 110px; height: 110px; background: linear-gradient(145deg, #3b82f6, #1e3a8a); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; box-shadow: 0 12px 20px -10px rgba(59,130,246,0.3);">
                 <span style="font-size: 3rem; font-weight: 600; color: white;">王</span>
             </div>
-            <h1 class="hero-name">王劼 <span style="font-size: 1.8rem; color:#334155;">Jie Wang</span></h1>
-            <p class="subtitle" style="margin-top: 0.5rem;">数学与应用数学 | 浙江大学 2026届 · B.Sc. in Mathematics, Zhejiang University</p>
+            <h1 class="hero-name">Jie Wang <span style="font-size: 1.8rem; color:#334155;">(王劼)</span></h1>
+            <!-- 英文主要信息 -->
+            <p class="subtitle" style="margin-top: 0.5rem;"><strong>B.Sc. in Mathematics, Zhejiang University (Class of 2026)</strong></p>
+            <p class="subtitle">Mathematics and Applied Mathematics · Zhejiang University</p>
+            <!-- 中文对照 -->
+            <p class="subtitle" style="color:#4b5563;">浙江大学数学与应用数学专业 · 2026届本科生</p>
             <div class="contact-line" style="margin: 1rem 0 0.5rem;">
                 <span>📧 3220100105@zju.edu.cn / wjwangjie26@163.com</span>
                 <span>📞 +86 18858151981</span>
-                <span>📍 Hangzhou</span>
+                <span>📍 Hangzhou, China</span>
             </div>
-            <p style="max-width: 700px; margin: 1rem auto 0; color: #2c3e50;">Passionate about embedded Linux, generative models (Diffusion/GAN), and AI for medical imaging. Seeking graduate opportunities in CS/ECE.</p>
-            <!-- Gitee 直达按钮 -->
+            <!-- 英文个人简介 (主导) -->
+            <p style="max-width: 700px; margin: 1rem auto 0; color: #2c3e50;"><strong>Passionate about embedded Linux, generative models (Diffusion/GAN), and AI for medical imaging. Seeking graduate opportunities in Computer Science and Data Science.</strong></p>
+            <!-- 中文翻译 -->
+            <p style="max-width: 700px; margin: 0.2rem auto 0; color: #475569; font-size: 0.9rem;">热衷于嵌入式Linux、生成模型（扩散/GAN）及医学影像AI，寻求计算机与数据科学方向深造机会。</p>
             <a href="https://gitee.com/wjforward" target="_blank" class="btn-gitee" style="margin-top: 1.2rem; background: #2c3e66;">
-                <span>🐙 我的Gitee代码仓 | My Gitee Repositories</span>
+                <span>🐙 My Gitee Repositories | 我的Gitee代码仓</span>
             </a>
         </div>
     </div>
 
-    <!-- 教育背景 中英文 -->
+    <!-- 教育背景：中英文并列板块，英文为准 -->
     <div class="card" id="education">
-        <div class="section-title"><span>🎓 教育背景</span> <span style="font-size: 1rem;">Education</span></div>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;">
-            <div><strong>浙江大学 (Zhejiang University)</strong> · 数学与应用数学 (Mathematics & Applied Math)</div>
-            <div style="color:#475569;">2022.09 – 2026.06</div>
+        <div class="section-title"><span>🎓 Education / 教育背景</span></div>
+        <div class="bilingual-block">
+            <div class="en-section"><strong>Zhejiang University</strong> · B.Sc. in Mathematics and Applied Mathematics</div>
+            <div class="zh-section"><strong>浙江大学</strong> · 数学与应用数学 本科</div>
+            <div class="inline-bilingual" style="margin-top: 0.3rem;">
+                <span class="inline-en">📅 Sep 2022 – Jun 2026</span>
+                <span class="inline-zh">2022年9月 – 2026年6月</span>
+            </div>
         </div>
-        <div style="margin-top: 0.5rem;">📊 <strong>GPA:</strong> 3.35/4.3 &nbsp;|&nbsp; 🏅 <strong>Ranking:</strong> 44/63</div>
-        <div style="margin-top: 0.8rem;"><strong>🏆 Honors & Awards:</strong> ZJU Third-Class Scholarship (2023-2024), ZJU Academic Excellence Award (2023-2024), Third Prize in 2024 National College Students Mathematics Competition (Provincial)</div>
-        <div style="margin-top: 0.5rem; font-size: 0.9rem; color:#2c5282;">✦ IELTS: 6.5 (Listening 6.5, Reading 7.5, Writing 6.0, Speaking 6.0) — 2025.7.9</div>
+        <div class="bilingual-block">
+            <div class="en-section"><strong>GPA:</strong> 3.35/4.3 &nbsp;|&nbsp; <strong>Ranking:</strong> 44/63</div>
+            <div class="zh-section"><strong>GPA:</strong> 3.35/4.3 &nbsp;|&nbsp; <strong>专业排名:</strong> 44/63</div>
+        </div>
+        <div class="bilingual-block">
+            <div class="en-section"><strong>🏆 Honors & Awards:</strong> ZJU Third-Class Scholarship (2023-2024), ZJU Academic Excellence Award (2023-2024), Third Prize in 2024 National College Students Mathematics Competition (Provincial)</div>
+            <div class="zh-section"><strong>🏆 荣誉与奖项:</strong> 浙江大学三等奖学金（2023-2024）、学业优秀标兵（2023-2024）、2024年全国大学生数学竞赛（数学A类）省级三等奖</div>
+        </div>
+        <div class="bilingual-block">
+            <div class="en-section"><strong>📜 IELTS:</strong> 6.5 (L6.5, R7.5, W6.0, S6.0) — Exam Date: July 9, 2025</div>
+            <div class="zh-section"><strong>📜 雅思成绩:</strong> 总分6.5（听力6.5，阅读7.5，写作6.0，口语6.0）— 2025年7月9日</div>
+        </div>
     </div>
 
-    <!-- 实习经历 Internship -->
+    <!-- 实习经历 Internship 中英文并行 -->
     <div class="card" id="internship">
-        <div class="section-title"><span>💼 实习经历</span> <span style="font-size: 1rem;">Internship</span></div>
+        <div class="section-title"><span>💼 Internship Experience / 实习经历</span></div>
         <div class="intern-item" style="background: #fafcff;">
-            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-                <div><strong>中国航天科技集团五院502所 (China Academy of Space Technology)</strong></div>
-                <div style="color:#3b82f6;">2024.06 – 2024.09</div>
+            <div class="inline-bilingual">
+                <span class="inline-en"><strong>China Academy of Space Technology (CAST) · 502nd Institute</strong></span>
+                <span class="inline-zh"><strong>中国航天科技集团五院502所</strong></span>
+                <span class="inline-en" style="color:#3b82f6;">Jun 2024 – Sep 2024</span>
+                <span class="inline-zh" style="color:#3b82f6;">2024年6月 – 2024年9月</span>
             </div>
-            <div><em>嵌入式Linux开发实习生 | Embedded Linux Development Intern</em></div>
+            <div class="en-section" style="margin-top: 0.3rem;"><em>Embedded Linux Development Intern</em></div>
+            <div class="zh-section"><em>嵌入式Linux开发实习生</em></div>
             <ul style="margin-top: 0.75rem; margin-left: 1.2rem; color: #2d3748;">
-                <li>研究航天器OTA增量更新方案，深入调研Mender等国际框架并完成可行性实验。</li>
-                <li>参与嵌入式Linux驱动定制与软件优化，理解高可靠性航天软件迭代流程。</li>
-                <li>设计OTA更新实验，加深对嵌入式Linux开发全流程的理解，与同事协作完成技术报告。</li>
+                <li class="en-section">Researched OTA incremental update solutions for spacecraft, conducted feasibility experiments with Mender framework.</li>
+                <li class="zh-section">研究航天器OTA增量更新方案，对Mender等框架进行可行性实验。</li>
+                <li class="en-section">Participated in embedded Linux driver customization and software optimization, gaining insights into high-reliability aerospace iteration.</li>
+                <li class="zh-section">参与嵌入式Linux驱动定制与软件优化，深入理解高可靠性航天软件迭代流程。</li>
+                <li class="en-section">Designed OTA update experiments, strengthened full-stack embedded Linux development, co-authored technical reports.</li>
+                <li class="zh-section">设计OTA更新实验，增强嵌入式Linux全流程开发能力，协作完成技术报告。</li>
             </ul>
-            <div style="font-size: 0.85rem; margin-top: 0.5rem; color:#4a5568;">🔧 收获：航天级软件工程思维 + 嵌入式Linux实操经验</div>
+            <div class="en-section" style="font-size:0.85rem; color:#4a5568;">🔧 Key takeaways: aerospace software engineering mindset + hands-on embedded Linux practice</div>
+            <div class="zh-section" style="font-size:0.85rem; color:#4a5568;">🔧 收获：航天级软件工程思维 + 嵌入式Linux实操经验</div>
         </div>
     </div>
 
-    <!-- 研究项目 Research Projects 重点展示 -->
+    <!-- 研究项目 Research Projects 每个项目双语 -->
     <div class="card" id="projects">
-        <div class="section-title"><span>🔬 研究项目</span> <span style="font-size: 1rem;">Research Projects</span></div>
+        <div class="section-title"><span>🔬 Research Projects / 研究项目</span></div>
         <div class="grid-2">
-            <!-- 1. GAN vs Diffusion -->
+            <!-- 项目1: GAN vs Diffusion -->
             <div class="project-item">
-                <h3 style="display: flex; gap: 8px;">🎨 GAN vs Diffusion Models</h3>
-                <div class="subtitle">CALFW & CIFAR-10 · PyTorch · GPU部署</div>
-                <p style="margin-top: 0.5rem;">对比DCGAN与扩散模型在人像/图像生成中的性能。扩散模型生成质量更优但训练耗时更长，深入理解生成式AI与参数调优。</p>
+                <div class="en-section"><strong>🎨 GAN vs Diffusion Models</strong></div>
+                <div class="zh-section"><strong>生成对抗网络 vs 扩散模型对比研究</strong></div>
+                <div class="en-section subtitle">CALFW & CIFAR-10 · PyTorch · GPU Deployment</div>
+                <div class="zh-section subtitle">CALFW & CIFAR-10数据集 · PyTorch · GPU部署</div>
+                <p class="en-section" style="margin-top: 0.5rem;">Compared DCGAN and diffusion models for face/image generation. Diffusion yields higher quality but longer training time; gained deep understanding of generative AI and hyperparameter tuning.</p>
+                <p class="zh-section" style="margin-top: 0.2rem;">对比DCGAN与扩散模型在人像/图像生成中的性能。扩散模型生成质量更优但训练耗时更长，深入理解生成式AI与参数调优。</p>
                 <div><span class="tag">Diffusion</span><span class="tag">DCGAN</span><span class="tag">PyTorch</span></div>
-                <a href="https://gitee.com/wjforward/ANN/tree/master/report3_A" target="_blank" class="btn-gitee" style="background:#4b5563; margin-top: 0.7rem; padding:0.3rem 1rem; font-size:0.8rem;">🔗 代码示例 (Gitee)</a>
+                <a href="https://gitee.com/wjforward/ANN/tree/master/report3_A" target="_blank" class="btn-gitee" style="background:#4b5563; margin-top: 0.7rem; padding:0.3rem 1rem; font-size:0.8rem;">🔗 Code on Gitee / 代码示例</a>
             </div>
-            <!-- 2. LSTM vs Transformer 九章算术 -->
+            <!-- 项目2: LSTM vs Transformer -->
             <div class="project-item">
-                <h3>📜 LSTM vs Transformer  · 《九章算术》</h3>
-                <div class="subtitle">古典数学文本生成 · 5万字数据集 · PyTorch</div>
-                <p>对比LSTM与Transformer在古文生成任务的表现：LSTM快速收敛(3 epoch)，Transformer需精细调度学习率，最终生成质量接近。获得文本生成与模型优化经验。</p>
+                <div class="en-section"><strong>📜 LSTM vs Transformer · Nine Chapters on Arithmetic</strong></div>
+                <div class="zh-section"><strong>LSTM与Transformer对比 · 《九章算术》文本生成</strong></div>
+                <div class="en-section subtitle">Classical Chinese math text generation · 50k dataset · PyTorch</div>
+                <div class="zh-section subtitle">古典数学文本生成 · 5万字数据集 · PyTorch</div>
+                <p class="en-section" style="margin-top: 0.5rem;">Compared LSTM and Transformer for ancient text generation: LSTM converges fast (3 epochs), Transformer requires careful LR scheduling. Achieved comparable generation quality and robust model optimization experience.</p>
+                <p class="zh-section" style="margin-top: 0.2rem;">对比LSTM与Transformer在古文生成任务的表现：LSTM快速收敛(3 epoch)，Transformer需精细调度学习率，最终生成质量接近。获得文本生成与模型优化经验。</p>
                 <div><span class="tag">LSTM</span><span class="tag">Transformer</span><span class="tag">NLP</span></div>
-                <a href="https://gitee.com/wjforward/ANN/tree/master/report3_B" target="_blank" class="btn-gitee" style="background:#4b5563; margin-top: 0.7rem; padding:0.3rem 1rem; font-size:0.8rem;">📁 实验代码</a>
+                <a href="https://gitee.com/wjforward/ANN/tree/master/report3_B" target="_blank" class="btn-gitee" style="background:#4b5563; margin-top: 0.7rem; padding:0.3rem 1rem; font-size:0.8rem;">📁 Code / 实验代码</a>
             </div>
-            <!-- 3. U-CT 重建项目 -->
+            <!-- 项目3: U-CT重建 -->
             <div class="project-item">
-                <h3>🩻 U-CT 基于机器学习的重建方法</h3>
-                <div class="subtitle">医学图像重建 · 团队项目 (2025.04 – 至今)</div>
-                <p>开发神经网络模型从超声原始图像重建人体解剖结构，设计图像分割/识别/重建任务。集成ResNext、DenseNet、注意力机制、YOLO等架构，旨在突破传统FBP限制。</p>
-                <div><span class="tag">ResNext</span><span class="tag">Attention</span><span class="tag">YOLO</span><span class="tag">医学影像</span></div>
+                <div class="en-section"><strong>🩻 Machine Learning-based Reconstruction for U-CT</strong></div>
+                <div class="zh-section"><strong>基于机器学习的U-CT重建方法</strong></div>
+                <div class="en-section subtitle">Medical Image Reconstruction · Team Project (Apr 2025 – present)</div>
+                <div class="zh-section subtitle">医学图像重建 · 团队项目 (2025年4月 – 至今)</div>
+                <p class="en-section" style="margin-top: 0.5rem;">Developing neural networks to reconstruct anatomical structures from raw ultrasound images. Integrating ResNext, DenseNet, attention mechanisms, YOLO, aiming to surpass traditional FBP limits.</p>
+                <p class="zh-section" style="margin-top: 0.2rem;">开发神经网络模型从超声原始图像重建人体解剖结构，集成ResNext、DenseNet、注意力机制、YOLO等架构，旨在突破传统FBP限制。</p>
+                <div><span class="tag">ResNext</span><span class="tag">Attention</span><span class="tag">YOLO</span><span class="tag">Medical Imaging</span></div>
             </div>
         </div>
         <hr>
-        <div style="margin-top: 0.5rem;"><strong>其他研究经历：</strong> 独立完成《基于LSTM和Transformer的九章算术对比实验》和《GAN与扩散人像生成》均已系统分析并撰写报告，所有代码托管于Gitee。</div>
+        <div class="en-section" style="margin-top:0.5rem;"><strong>Additional research:</strong> Independently completed "LSTM vs Transformer on Classical Texts" and "GAN vs Diffusion" — full analysis and reports, all code hosted on Gitee.</div>
+        <div class="zh-section" style="margin-top:0.3rem;"><strong>其他研究经历：</strong>独立完成《基于LSTM和Transformer的九章算术对比实验》和《GAN与扩散人像生成》系统分析报告，所有代码托管于Gitee。</div>
     </div>
 
-    <!-- 竞赛经历 Competitions -->
+    <!-- 竞赛经历 Competitions 双语 -->
     <div class="card">
-        <div class="section-title"><span>🏅 竞赛经历</span> <span style="font-size: 1rem;">Competitions</span></div>
+        <div class="section-title"><span>🏅 Competitions / 竞赛经历</span></div>
         <div class="grid-2" style="gap: 1rem;">
-            <div>
-                <div><strong>全国大学生数学竞赛 (数学A类)</strong> · 省级三等奖 (2024.12)</div>
-                <div style="font-size:0.85rem;">检验数学基础，完善知识体系，单人参赛。</div>
+            <div class="grid-bilingual-item">
+                <div class="en-section"><strong>National College Mathematics Competition (Math A Category)</strong> · Provincial Third Prize (Dec 2024)</div>
+                <div class="zh-section"><strong>全国大学生数学竞赛 (数学A类)</strong> · 省级三等奖 (2024年12月)</div>
+                <div class="en-section" style="font-size:0.85rem;">Strengthened mathematical foundation.</div>
+                <div class="zh-section" style="font-size:0.85rem;">检验数学基础，完善知识体系。</div>
             </div>
-            <div>
-                <div><strong>浙江大学数学建模竞赛</strong> · 参赛奖 (2025.5)</div>
-                <div style="font-size:0.85rem;">无人机多机协同路径覆盖：Gurobi求解器、时间离散化、凸松弛。负责优化建模与LaTeX撰写。</div>
+            <div class="grid-bilingual-item">
+                <div class="en-section"><strong>ZJU Mathematical Contest in Modeling</strong> · Participation Award (May 2025)</div>
+                <div class="zh-section"><strong>浙江大学数学建模竞赛</strong> · 参赛奖 (2025年5月)</div>
+                <div class="en-section" style="font-size:0.85rem;">Drone collaborative path coverage: Gurobi solver, time discretization, convex relaxation. Responsible for optimization modeling and LaTeX writing.</div>
+                <div class="zh-section" style="font-size:0.85rem;">无人机多机协同路径覆盖：Gurobi求解器、时间离散化、凸松弛。负责优化建模与LaTeX撰写。</div>
             </div>
         </div>
     </div>
 
-    <!-- 技能板块 + 证书 按照功能分类校对 -->
+    <!-- 技能板块 中英文分类 -->
     <div class="card" id="skills">
-        <div class="section-title"><span>⚙️ 技术能力</span> <span style="font-size: 1rem;">Technical Skills</span></div>
-        <!-- 根据原简历进行分类，确保功能分类准确：编程语言、工具链、文档等 -->
-        <div style="margin-bottom: 0.8rem;"><strong>💻 Programming Languages:</strong></div>
-        <div class="skill-list">
-            <span class="skill-badge">C++</span>
-            <span class="skill-badge">Python</span>
-            <span class="skill-badge">MATLAB</span>
-            <span class="skill-badge">Git</span>
-            <span class="skill-badge">Shell Scripting</span>
+        <div class="section-title"><span>⚙️ Technical Skills / 技术能力</span></div>
+        <div class="bilingual-block">
+            <div class="en-section"><strong>💻 Programming Languages:</strong> C++, Python, MATLAB, Git, Shell Scripting</div>
+            <div class="zh-section"><strong>💻 编程语言:</strong> C++, Python, MATLAB, Git, Shell脚本</div>
         </div>
-        <div style="margin: 1rem 0 0.5rem;"><strong>📄 Documentation & Tools:</strong></div>
-        <div class="skill-list">
-            <span class="skill-badge">LaTeX</span>
-            <span class="skill-badge">Markdown</span>
-            <span class="skill-badge">Makefile</span>
-            <span class="skill-badge">Gitee/GitHub</span>
+        <div class="bilingual-block">
+            <div class="en-section"><strong>📄 Documentation & Tools:</strong> LaTeX, Markdown, Makefile, Gitee/GitHub</div>
+            <div class="zh-section"><strong>📄 文档与工具:</strong> LaTeX, Markdown, Makefile, Gitee/GitHub</div>
         </div>
-        <div style="margin: 1rem 0 0.5rem;"><strong>🧠 Machine Learning / DL:</strong></div>
-        <div class="skill-list">
-            <span class="skill-badge">PyTorch</span>
-            <span class="skill-badge">Transformers</span>
-            <span class="skill-badge">YOLO</span>
-            <span class="skill-badge">Diffusion Models</span>
-            <span class="skill-badge">GAN</span>
+        <div class="bilingual-block">
+            <div class="en-section"><strong>🧠 Machine Learning / Deep Learning:</strong> PyTorch, Transformers, YOLO, Diffusion Models, GAN</div>
+            <div class="zh-section"><strong>🧠 机器学习 / 深度学习:</strong> PyTorch, Transformers, YOLO, 扩散模型, GAN</div>
         </div>
-        <div style="margin-top: 1.2rem; background: #f1f5f9; padding: 0.8rem; border-radius: 20px;">
-            <p><strong>📌 功能分类说明（Function Classification）：</strong> 上述技能已按「编程语言」「文档与工具」「机器学习框架」分类，符合简历技术栈组织方式；如无需分类可保留直接罗列，但当前分类清晰易读，准确体现候选人能力维度。</p>
+        <div style="margin-top: 1rem; background:#f1f5f9; padding: 0.8rem; border-radius: 20px;">
+            <p class="en-section"><strong>📌 Function classification:</strong> Skills are categorized by programming languages, documentation tools, and ML frameworks to present a clear competency profile.</p>
+            <p class="zh-section"><strong>📌 功能分类说明：</strong> 技能已按「编程语言」「文档与工具」「机器学习框架」分类，准确体现候选人能力维度。</p>
         </div>
     </div>
 
-    <!-- 额外荣誉 + 社会活动 -->
+    <!-- 荣誉 & 活动 双语 -->
     <div class="card">
-        <div class="section-title"><span>🏅 荣誉 & 活动</span> <span style="font-size: 1rem;">Honors & Activities</span></div>
+        <div class="section-title"><span>🏅 Honors & Activities / 荣誉与活动</span></div>
         <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
             <div>
-                <div><strong>浙江大学三等奖学金</strong> (2025.01)</div>
-                <div><strong>学业优秀标兵</strong> (2025.01)</div>
-                <div><strong>全国大学生数学竞赛三等奖</strong> (省级) 2024.12</div>
+                <div class="en-section"><strong>ZJU Third-Class Scholarship</strong> (Jan 2025)</div>
+                <div class="zh-section"><strong>浙江大学三等奖学金</strong> (2025年1月)</div>
+                <div class="en-section"><strong>Academic Excellence Award</strong> (Jan 2025)</div>
+                <div class="zh-section"><strong>学业优秀标兵</strong> (2025年1月)</div>
+                <div class="en-section"><strong>National Math Competition Third Prize</strong> (Provincial) Dec 2024</div>
+                <div class="zh-section"><strong>全国大学生数学竞赛三等奖</strong> (省级) 2024年12月</div>
             </div>
             <div>
-                <div><strong>浙江大学SQTP重点项目负责人</strong> (2023.04-2023.12)</div>
-                <div>《数学与应用数学专业学生发展前景与职业规划》组织立项获评重点项目</div>
-                <div>参访之江实验室、阿里巴巴西溪园区，与教授及校友交流AI与数学研究</div>
+                <div class="en-section"><strong>ZJU SQTP Key Project Leader</strong> (Apr 2023 – Dec 2023)</div>
+                <div class="zh-section"><strong>浙江大学SQTP重点项目负责人</strong> (2023年4月-2023年12月)</div>
+                <div class="en-section">"Career development & planning for Math students" — organized research, visited Zhejiang Lab & Alibaba Xixi Park.</div>
+                <div class="zh-section">《数学与应用数学专业学生发展前景与职业规划》组织立项获评重点项目，参访之江实验室、阿里巴巴西溪园区。</div>
             </div>
         </div>
-        <div style="margin-top: 1rem; font-size:0.9rem;">🏸 爱好：阅读、乒乓球、篮球、音乐</div>
+        <div class="en-section" style="margin-top:1rem;">🏸 Hobbies: reading, table tennis, basketball, music</div>
+        <div class="zh-section" style="margin-top:0.2rem;">🏸 爱好：阅读、乒乓球、篮球、音乐</div>
     </div>
 
-    <!-- 证书 + 语言 附加 -->
+    <!-- 证书 / 语言 双语 -->
     <div class="card">
-        <div class="section-title"><span>📜 证书 / 语言</span> <span style="font-size: 1rem;">Certificates</span></div>
-        <div>CET-6 (537) · IELTS 备考中 (2025.7考试) · 普通话流利 · 学术英语读写能力</div>
-        <div style="margin-top: 0.6rem;">🏅 专业证书：无特别证书但具备扎实的编程与算法基础，完整项目经验丰富。</div>
+        <div class="section-title"><span>📜 Certificates & Languages / 证书与语言</span></div>
+        <div class="en-section">CET-6 (537) · IELTS (6.5) · Fluent Mandarin · Academic English literacy</div>
+        <div class="zh-section">CET-6 (537) · 雅思6.5 · 普通话流利 · 学术英语读写能力</div>
+        <div class="en-section" style="margin-top:0.6rem;">🏅 Strong programming & algorithm foundation with comprehensive project experience.</div>
+        <div class="zh-section" style="margin-top:0.2rem;">🏅 具备扎实的编程与算法基础，完整项目经验丰富。</div>
     </div>
 
-    <!-- Gitee 代码展示区 以链接为主 -->
+    <!-- Gitee 代码仓库 -->
     <div class="card" id="code">
-        <div class="section-title"><span>📦 代码仓库 · Gitee Portfolio</span> <span style="font-size: 1rem;">Code & Projects</span></div>
+        <div class="section-title"><span>📦 Code Portfolio · Gitee / 代码仓库</span></div>
         <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <p style="max-width: 80%;">我的学习过程中所有关键项目——包括GAN与扩散模型对比、LSTM文本生成、以及图像重建练习代码——均托管在Gitee上，持续更新中。欢迎访问与交流！</p>
+            <p class="en-section" style="max-width: 80%;">All key projects — including GAN vs Diffusion, LSTM text generation, and image reconstruction exercises — are hosted on Gitee and continuously updated. Welcome to visit and connect!</p>
+            <p class="zh-section" style="max-width: 80%;">我的学习过程中所有关键项目——包括GAN与扩散模型对比、LSTM文本生成、以及图像重建练习代码——均托管在Gitee上，持续更新中。欢迎访问与交流！</p>
             <a href="https://gitee.com/wjforward" target="_blank" class="btn-gitee" style="background: #1e3a8a; margin-top: 1rem; font-size: 1rem; padding: 0.7rem 2rem;">
-                🐙 访问我的 Gitee 主页 / Visit My Gitee
+                🐙 Visit My Gitee / 访问我的 Gitee 主页
             </a>
-            <div style="margin-top: 1rem; font-size: 0.85rem; color: #4b5563;">🔗 直链: https://gitee.com/wjforward  — 包含本科研究代码、实验脚本、课程实践</div>
+            <div class="en-section" style="margin-top: 1rem; font-size: 0.85rem;">🔗 Direct link: https://gitee.com/wjforward — includes undergraduate research code, lab scripts, course projects.</div>
+            <div class="zh-section" style="font-size: 0.85rem;">🔗 直链: https://gitee.com/wjforward — 包含本科研究代码、实验脚本、课程实践。</div>
         </div>
     </div>
 
-    <!-- 联系区域 中英文 -->
+    <!-- 联系区域 -->
     <div class="card" id="contact">
-        <div class="section-title"><span>📫 联系我</span> <span style="font-size: 1rem;">Contact</span></div>
+        <div class="section-title"><span>📫 Contact / 联系我</span></div>
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;">
-            <div><strong>Email (学术):</strong> 3220100105@zju.edu.cn / wjwangjie26@163.com</div>
-            <div><strong>Phone:</strong> +86 18858151981</div>
-            <div><strong>Gitee:</strong> <a href="https://gitee.com/wjforward" target="_blank" style="color:#2563eb;">@wjforward</a></div>
+            <div><span class="en-section"><strong>Email (Academic):</strong> 3220100105@zju.edu.cn / wjwangjie26@163.com</span><br><span class="zh-section"><strong>邮箱：</strong> 3220100105@zju.edu.cn / wjwangjie26@163.com</span></div>
+            <div><span class="en-section"><strong>Phone:</strong> +86 18858151981</span><br><span class="zh-section"><strong>电话：</strong> +86 18858151981</span></div>
+            <div><span class="en-section"><strong>Gitee:</strong> <a href="https://gitee.com/wjforward" target="_blank" style="color:#2563eb;">@wjforward</a></span><br><span class="zh-section"><strong>Gitee账号：</strong> <a href="https://gitee.com/wjforward" target="_blank" style="color:#2563eb;">@wjforward</a></span></div>
         </div>
     </div>
 
     <div class="footer">
-        <p>© 2025 王劼 (Jie Wang) |  Built with ❤️ | 中英文双语个人主页 | 持续更新研究动态与项目代码</p>
-        <p style="font-size: 0.75rem; margin-top: 0.3rem;">* 简历信息基于真实经历，项目均完成或进行中。Gitee仓库持续上传实验代码。</p>
+        <p>© 2025 Jie Wang (王劼) | Built with ❤️ | Bilingual Personal Homepage | Research updates & project code continuously evolving</p>
+        <p class="en-section" style="font-size: 0.75rem; margin-top: 0.3rem;">* Resume info based on authentic experience, projects completed or in progress. Gitee repositories being updated regularly.</p>
+        <p class="zh-section" style="font-size: 0.75rem;">* 简历信息基于真实经历，项目均完成或进行中。Gitee仓库持续上传实验代码。</p>
     </div>
 </div>
 
@@ -445,8 +533,7 @@
             }
         });
     });
-    // 简单控制台提醒
-    console.log("Jie Wang's Portfolio | Gitee: https://gitee.com/wjforward");
+    console.log("Jie Wang's Portfolio | Bilingual (EN primary) | Gitee: https://gitee.com/wjforward");
 </script>
 </body>
 </html>
