@@ -1,22 +1,280 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>我的第一个网页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王劼 | 个人主页</title>
     <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            padding: 50px;
-            background: #f0f0f0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
             color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-links {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+
+        /* 主要内容容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* 英雄区（大标题区） */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .hero .tagline {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .hero .bio {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* 技能区域 */
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #764ba2;
+            padding-left: 1rem;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .skill-tag {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .skill-tag:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* 项目卡片 */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .project-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .project-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* 联系按钮 */
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .contact-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>你好，世界！</h1>
-    <p>这是我的第一个网页。</p>
-    <button onclick="alert('你点击了按钮！')">点我试试</button>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#">首页</a></li>
+            <li><a href="#skills">技能</a></li>
+            <li><a href="#projects">项目</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- 英雄区 -->
+        <div class="hero">
+            <!-- 头像（可以替换成你自己的图片） -->
+            <img src="https://github.com/wjforward.png" alt="头像" class="avatar" onerror="this.src='https://via.placeholder.com/150'">
+            <h1>王劼</h1>
+            <div class="tagline">学习者 | 正在打造自己的数字花园</div>
+            <p class="bio">你好！这是我的第一个个人主页，我会不断更新它，记录我的学习过程和作品。</p>
+            <button class="contact-btn" onclick="sayHello()">打个招呼 👋</button>
+        </div>
+
+        <!-- 技能区域 -->
+        <div class="section" id="skills">
+            <h2>📚 正在学习</h2>
+            <div class="skills">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Git & GitHub</span>
+                <span class="skill-tag">响应式设计</span>
+            </div>
+        </div>
+
+        <!-- 项目区域 -->
+        <div class="section" id="projects">
+            <h2>🚀 我的项目</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <h3>个人主页</h3>
+                    <p>这是我的第一个网页项目，部署在 GitHub Pages 上。</p>
+                    <a href="https://wjforward.github.io" class="project-link">查看 →</a>
+                </div>
+                <div class="project-card">
+                    <h3>下一个项目</h3>
+                    <p>正在构思中... 可能是博客或小工具。</p>
+                    <a href="#" class="project-link">即将到来 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 联系区域 -->
+        <div class="section" id="contact">
+            <h2>📫 联系我</h2>
+            <p>欢迎交流学习心得！</p>
+            <p>
+                📧 邮箱：3220100105@zju.edu.cn<br>
+                🐙 GitHub：<a href="https://github.com/wjforward">@wjforward</a>
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 王劼 | 持续学习中</p>
+        </div>
+    </div>
+
+    <script>
+        function sayHello() {
+            alert("你好！感谢访问我的个人主页 🎉");
+        }
+
+        // 平滑滚动（点击导航链接时）
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                if (targetId && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
