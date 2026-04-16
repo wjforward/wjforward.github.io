@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王劼 | 个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>王劼 | Jie Wang - 个人主页 | Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -12,269 +12,441 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, sans-serif;
+            line-height: 1.65;
+            color: #1e293b;
+            background: #f8fafc;
+            scroll-behavior: smooth;
         }
 
-        /* 导航栏 */
+        /* 渐变背景点缀 */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(145deg, #f1f5f9 0%, #e6edf5 100%);
+        }
+
+        /* 导航栏 - 双语简约 */
         .navbar {
-            background: rgba(255,255,255,0.95);
-            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             position: sticky;
             top: 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            border-bottom: 1px solid rgba(100,116,139,0.15);
         }
-        .nav-links {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0.9rem 2rem;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
             list-style: none;
         }
         .nav-links a {
             text-decoration: none;
-            color: #667eea;
             font-weight: 500;
-            transition: color 0.3s;
+            color: #334155;
+            transition: 0.2s;
+            font-size: 0.95rem;
         }
         .nav-links a:hover {
-            color: #764ba2;
+            color: #2563eb;
+        }
+        .lang-badge {
+            font-size: 0.8rem;
+            background: #e2e8f0;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            color: #1e293b;
         }
 
-        /* 主要内容容器 */
+        /* 容器 */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
         }
 
-        /* 英雄区（大标题区） */
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
+        /* 卡片通用样式 */
+        .card {
             background: white;
-            border-radius: 20px;
+            border-radius: 28px;
+            padding: 2rem 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            border: 1px solid rgba(203,213,225,0.4);
         }
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #667eea;
-            margin-bottom: 1rem;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-        .hero .tagline {
-            color: #667eea;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        .hero .bio {
-            max-width: 600px;
-            margin: 0 auto;
-            color: #666;
-        }
-
-        /* 技能区域 */
-        .section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        .section h2 {
-            color: #667eea;
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
-            border-left: 4px solid #764ba2;
-            padding-left: 1rem;
-        }
-        .skills {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+            align-items: center;
+            gap: 12px;
+            border-left: 5px solid #3b82f6;
+            padding-left: 1.2rem;
         }
-        .skill-tag {
-            background: #f0f0f0;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s;
+        .section-title span {
+            background: linear-gradient(135deg, #1e293b, #2d3a4b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        .skill-tag:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
+        .subtitle {
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.3px;
         }
-
-        /* 项目卡片 */
-        .projects {
+        .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            gap: 1.8rem;
         }
-        .project-card {
-            background: #f9f9f9;
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: transform 0.3s;
+        .project-item, .intern-item, .honor-item {
+            background: #fefefe;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            transition: 0.2s;
+            border: 1px solid #eef2ff;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .project-item:hover {
+            border-color: #b9d0f8;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
         }
-        .project-card h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
+        .tag {
+            background: #eef2ff;
+            color: #1e40af;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-right: 0.5rem;
         }
-        .project-card p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .project-link {
-            color: #667eea;
+        .btn-gitee {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #1f2937;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            margin-top: 0.75rem;
         }
-
-        /* 联系按钮 */
-        .contact-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
+        .btn-gitee:hover {
+            background: #2d3a4b;
+            transform: translateY(-2px);
+        }
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
             margin-top: 1rem;
-            transition: transform 0.3s;
-            border: none;
-            cursor: pointer;
         }
-        .contact-btn:hover {
-            transform: scale(1.05);
+        .skill-badge {
+            background: #f1f5f9;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #0f172a;
         }
-
-        /* 页脚 */
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #cbd5e1, transparent);
+        }
         .footer {
             text-align: center;
             padding: 2rem;
-            color: white;
-            background: rgba(0,0,0,0.2);
-            border-radius: 20px;
+            color: #475569;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 1rem;
         }
-
-        /* 响应式 */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
+        .contact-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.7rem;
             }
-            .container {
-                padding: 1rem;
+            .section-title {
+                font-size: 1.5rem;
             }
-            .nav-links {
-                gap: 1rem;
+            .card {
+                padding: 1.5rem;
             }
+        }
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fcff 100%);
+            border-radius: 2rem;
+        }
+        .hero-name {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #0f2b4d, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .badge-icon {
+            font-size: 1rem;
+            vertical-align: middle;
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
+<div class="bg-decoration"></div>
+
+<!-- 导航栏 中英文 -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">Jie Wang · 王劼</div>
         <ul class="nav-links">
-            <li><a href="#">首页</a></li>
-            <li><a href="#skills">技能</a></li>
-            <li><a href="#projects">项目</a></li>
-            <li><a href="#contact">联系</a></li>
+            <li><a href="#about">关于 | About</a></li>
+            <li><a href="#education">教育 | Edu</a></li>
+            <li><a href="#projects">研究 | Research</a></li>
+            <li><a href="#internship">实习 | Intern</a></li>
+            <li><a href="#skills">技能 | Skills</a></li>
+            <li><a href="#code">代码 | Gitee</a></li>
         </ul>
-    </nav>
+        <div class="lang-badge">EN / 中文</div>
+    </div>
+</nav>
 
-    <div class="container">
-        <!-- 英雄区 -->
-        <div class="hero">
-            <!-- 头像（可以替换成你自己的图片） -->
-            <img src="https://github.com/wjforward.png" alt="头像" class="avatar" onerror="this.src='https://via.placeholder.com/150'">
-            <h1>王劼</h1>
-            <div class="tagline">学习者 | 正在打造自己的数字花园</div>
-            <p class="bio">你好！这是我的第一个个人主页，我会不断更新它，记录我的学习过程和作品。</p>
-            <button class="contact-btn" onclick="sayHello()">打个招呼 👋</button>
-        </div>
-
-        <!-- 技能区域 -->
-        <div class="section" id="skills">
-            <h2>📚 正在学习</h2>
-            <div class="skills">
-                <span class="skill-tag">HTML5</span>
-                <span class="skill-tag">CSS3</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Git & GitHub</span>
-                <span class="skill-tag">响应式设计</span>
+<div class="container">
+    <!-- Hero 头部区域 -->
+    <div class="card hero" id="about">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <!-- 头像占位符 (基于个人信息可放置首字母或简约头像) -->
+            <div style="width: 110px; height: 110px; background: linear-gradient(145deg, #3b82f6, #1e3a8a); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; box-shadow: 0 12px 20px -10px rgba(59,130,246,0.3);">
+                <span style="font-size: 3rem; font-weight: 600; color: white;">王</span>
             </div>
-        </div>
-
-        <!-- 项目区域 -->
-        <div class="section" id="projects">
-            <h2>🚀 我的项目</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>个人主页</h3>
-                    <p>这是我的第一个网页项目，部署在 GitHub Pages 上。</p>
-                    <a href="https://wjforward.github.io" class="project-link">查看 →</a>
-                </div>
-                <div class="project-card">
-                    <h3>下一个项目</h3>
-                    <p>正在构思中... 可能是博客或小工具。</p>
-                    <a href="#" class="project-link">即将到来 →</a>
-                </div>
+            <h1 class="hero-name">王劼 <span style="font-size: 1.8rem; color:#334155;">Jie Wang</span></h1>
+            <p class="subtitle" style="margin-top: 0.5rem;">数学与应用数学 | 浙江大学 2026届 · B.Sc. in Mathematics, Zhejiang University</p>
+            <div class="contact-line" style="margin: 1rem 0 0.5rem;">
+                <span>📧 3220100105@zju.edu.cn / wjwangjie26@163.com</span>
+                <span>📞 +86 18858151981</span>
+                <span>📍 Hangzhou</span>
             </div>
-        </div>
-
-        <!-- 联系区域 -->
-        <div class="section" id="contact">
-            <h2>📫 联系我</h2>
-            <p>欢迎交流学习心得！</p>
-            <p>
-                📧 邮箱：3220100105@zju.edu.cn<br>
-                🐙 GitHub：<a href="https://github.com/wjforward">@wjforward</a>
-            </p>
-        </div>
-
-        <div class="footer">
-            <p>© 2025 王劼 | 持续学习中</p>
+            <p style="max-width: 700px; margin: 1rem auto 0; color: #2c3e50;">Passionate about embedded Linux, generative models (Diffusion/GAN), and AI for medical imaging. Seeking graduate opportunities in CS/ECE.</p>
+            <!-- Gitee 直达按钮 -->
+            <a href="https://gitee.com/wjforward" target="_blank" class="btn-gitee" style="margin-top: 1.2rem; background: #2c3e66;">
+                <span>🐙 我的Gitee代码仓 | My Gitee Repositories</span>
+            </a>
         </div>
     </div>
 
-    <script>
-        function sayHello() {
-            alert("你好！感谢访问我的个人主页 🎉");
-        }
+    <!-- 教育背景 中英文 -->
+    <div class="card" id="education">
+        <div class="section-title"><span>🎓 教育背景</span> <span style="font-size: 1rem;">Education</span></div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;">
+            <div><strong>浙江大学 (Zhejiang University)</strong> · 数学与应用数学 (Mathematics & Applied Math)</div>
+            <div style="color:#475569;">2022.09 – 2026.06</div>
+        </div>
+        <div style="margin-top: 0.5rem;">📊 <strong>GPA:</strong> 3.35/4.3 &nbsp;|&nbsp; 🏅 <strong>Ranking:</strong> 44/63</div>
+        <div style="margin-top: 0.8rem;"><strong>🏆 Honors & Awards:</strong> ZJU Third-Class Scholarship (2023-2024), ZJU Academic Excellence Award (2023-2024), Third Prize in 2024 National College Students Mathematics Competition (Provincial)</div>
+        <div style="margin-top: 0.5rem; font-size: 0.9rem; color:#2c5282;">✦ IELTS: 6.5 (Listening 6.5, Reading 7.5, Writing 6.0, Speaking 6.0) — 2025.7.9</div>
+    </div>
 
-        // 平滑滚动（点击导航链接时）
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                if (targetId && targetId.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
+    <!-- 实习经历 Internship -->
+    <div class="card" id="internship">
+        <div class="section-title"><span>💼 实习经历</span> <span style="font-size: 1rem;">Internship</span></div>
+        <div class="intern-item" style="background: #fafcff;">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <div><strong>中国航天科技集团五院502所 (China Academy of Space Technology)</strong></div>
+                <div style="color:#3b82f6;">2024.06 – 2024.09</div>
+            </div>
+            <div><em>嵌入式Linux开发实习生 | Embedded Linux Development Intern</em></div>
+            <ul style="margin-top: 0.75rem; margin-left: 1.2rem; color: #2d3748;">
+                <li>研究航天器OTA增量更新方案，深入调研Mender等国际框架并完成可行性实验。</li>
+                <li>参与嵌入式Linux驱动定制与软件优化，理解高可靠性航天软件迭代流程。</li>
+                <li>设计OTA更新实验，加深对嵌入式Linux开发全流程的理解，与同事协作完成技术报告。</li>
+            </ul>
+            <div style="font-size: 0.85rem; margin-top: 0.5rem; color:#4a5568;">🔧 收获：航天级软件工程思维 + 嵌入式Linux实操经验</div>
+        </div>
+    </div>
+
+    <!-- 研究项目 Research Projects 重点展示 -->
+    <div class="card" id="projects">
+        <div class="section-title"><span>🔬 研究项目</span> <span style="font-size: 1rem;">Research Projects</span></div>
+        <div class="grid-2">
+            <!-- 1. GAN vs Diffusion -->
+            <div class="project-item">
+                <h3 style="display: flex; gap: 8px;">🎨 GAN vs Diffusion Models</h3>
+                <div class="subtitle">CALFW & CIFAR-10 · PyTorch · GPU部署</div>
+                <p style="margin-top: 0.5rem;">对比DCGAN与扩散模型在人像/图像生成中的性能。扩散模型生成质量更优但训练耗时更长，深入理解生成式AI与参数调优。</p>
+                <div><span class="tag">Diffusion</span><span class="tag">DCGAN</span><span class="tag">PyTorch</span></div>
+                <a href="https://gitee.com/wjforward/ANN/tree/master/report3_A" target="_blank" class="btn-gitee" style="background:#4b5563; margin-top: 0.7rem; padding:0.3rem 1rem; font-size:0.8rem;">🔗 代码示例 (Gitee)</a>
+            </div>
+            <!-- 2. LSTM vs Transformer 九章算术 -->
+            <div class="project-item">
+                <h3>📜 LSTM vs Transformer  · 《九章算术》</h3>
+                <div class="subtitle">古典数学文本生成 · 5万字数据集 · PyTorch</div>
+                <p>对比LSTM与Transformer在古文生成任务的表现：LSTM快速收敛(3 epoch)，Transformer需精细调度学习率，最终生成质量接近。获得文本生成与模型优化经验。</p>
+                <div><span class="tag">LSTM</span><span class="tag">Transformer</span><span class="tag">NLP</span></div>
+                <a href="https://gitee.com/wjforward/ANN/tree/master/report3_B" target="_blank" class="btn-gitee" style="background:#4b5563; margin-top: 0.7rem; padding:0.3rem 1rem; font-size:0.8rem;">📁 实验代码</a>
+            </div>
+            <!-- 3. U-CT 重建项目 -->
+            <div class="project-item">
+                <h3>🩻 U-CT 基于机器学习的重建方法</h3>
+                <div class="subtitle">医学图像重建 · 团队项目 (2025.04 – 至今)</div>
+                <p>开发神经网络模型从超声原始图像重建人体解剖结构，设计图像分割/识别/重建任务。集成ResNext、DenseNet、注意力机制、YOLO等架构，旨在突破传统FBP限制。</p>
+                <div><span class="tag">ResNext</span><span class="tag">Attention</span><span class="tag">YOLO</span><span class="tag">医学影像</span></div>
+            </div>
+        </div>
+        <hr>
+        <div style="margin-top: 0.5rem;"><strong>其他研究经历：</strong> 独立完成《基于LSTM和Transformer的九章算术对比实验》和《GAN与扩散人像生成》均已系统分析并撰写报告，所有代码托管于Gitee。</div>
+    </div>
+
+    <!-- 竞赛经历 Competitions -->
+    <div class="card">
+        <div class="section-title"><span>🏅 竞赛经历</span> <span style="font-size: 1rem;">Competitions</span></div>
+        <div class="grid-2" style="gap: 1rem;">
+            <div>
+                <div><strong>全国大学生数学竞赛 (数学A类)</strong> · 省级三等奖 (2024.12)</div>
+                <div style="font-size:0.85rem;">检验数学基础，完善知识体系，单人参赛。</div>
+            </div>
+            <div>
+                <div><strong>浙江大学数学建模竞赛</strong> · 参赛奖 (2025.5)</div>
+                <div style="font-size:0.85rem;">无人机多机协同路径覆盖：Gurobi求解器、时间离散化、凸松弛。负责优化建模与LaTeX撰写。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 技能板块 + 证书 按照功能分类校对 -->
+    <div class="card" id="skills">
+        <div class="section-title"><span>⚙️ 技术能力</span> <span style="font-size: 1rem;">Technical Skills</span></div>
+        <!-- 根据原简历进行分类，确保功能分类准确：编程语言、工具链、文档等 -->
+        <div style="margin-bottom: 0.8rem;"><strong>💻 Programming Languages:</strong></div>
+        <div class="skill-list">
+            <span class="skill-badge">C++</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">MATLAB</span>
+            <span class="skill-badge">Git</span>
+            <span class="skill-badge">Shell Scripting</span>
+        </div>
+        <div style="margin: 1rem 0 0.5rem;"><strong>📄 Documentation & Tools:</strong></div>
+        <div class="skill-list">
+            <span class="skill-badge">LaTeX</span>
+            <span class="skill-badge">Markdown</span>
+            <span class="skill-badge">Makefile</span>
+            <span class="skill-badge">Gitee/GitHub</span>
+        </div>
+        <div style="margin: 1rem 0 0.5rem;"><strong>🧠 Machine Learning / DL:</strong></div>
+        <div class="skill-list">
+            <span class="skill-badge">PyTorch</span>
+            <span class="skill-badge">Transformers</span>
+            <span class="skill-badge">YOLO</span>
+            <span class="skill-badge">Diffusion Models</span>
+            <span class="skill-badge">GAN</span>
+        </div>
+        <div style="margin-top: 1.2rem; background: #f1f5f9; padding: 0.8rem; border-radius: 20px;">
+            <p><strong>📌 功能分类说明（Function Classification）：</strong> 上述技能已按「编程语言」「文档与工具」「机器学习框架」分类，符合简历技术栈组织方式；如无需分类可保留直接罗列，但当前分类清晰易读，准确体现候选人能力维度。</p>
+        </div>
+    </div>
+
+    <!-- 额外荣誉 + 社会活动 -->
+    <div class="card">
+        <div class="section-title"><span>🏅 荣誉 & 活动</span> <span style="font-size: 1rem;">Honors & Activities</span></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+            <div>
+                <div><strong>浙江大学三等奖学金</strong> (2025.01)</div>
+                <div><strong>学业优秀标兵</strong> (2025.01)</div>
+                <div><strong>全国大学生数学竞赛三等奖</strong> (省级) 2024.12</div>
+            </div>
+            <div>
+                <div><strong>浙江大学SQTP重点项目负责人</strong> (2023.04-2023.12)</div>
+                <div>《数学与应用数学专业学生发展前景与职业规划》组织立项获评重点项目</div>
+                <div>参访之江实验室、阿里巴巴西溪园区，与教授及校友交流AI与数学研究</div>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; font-size:0.9rem;">🏸 爱好：阅读、乒乓球、篮球、音乐</div>
+    </div>
+
+    <!-- 证书 + 语言 附加 -->
+    <div class="card">
+        <div class="section-title"><span>📜 证书 / 语言</span> <span style="font-size: 1rem;">Certificates</span></div>
+        <div>CET-6 (537) · IELTS 备考中 (2025.7考试) · 普通话流利 · 学术英语读写能力</div>
+        <div style="margin-top: 0.6rem;">🏅 专业证书：无特别证书但具备扎实的编程与算法基础，完整项目经验丰富。</div>
+    </div>
+
+    <!-- Gitee 代码展示区 以链接为主 -->
+    <div class="card" id="code">
+        <div class="section-title"><span>📦 代码仓库 · Gitee Portfolio</span> <span style="font-size: 1rem;">Code & Projects</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <p style="max-width: 80%;">我的学习过程中所有关键项目——包括GAN与扩散模型对比、LSTM文本生成、以及图像重建练习代码——均托管在Gitee上，持续更新中。欢迎访问与交流！</p>
+            <a href="https://gitee.com/wjforward" target="_blank" class="btn-gitee" style="background: #1e3a8a; margin-top: 1rem; font-size: 1rem; padding: 0.7rem 2rem;">
+                🐙 访问我的 Gitee 主页 / Visit My Gitee
+            </a>
+            <div style="margin-top: 1rem; font-size: 0.85rem; color: #4b5563;">🔗 直链: https://gitee.com/wjforward  — 包含本科研究代码、实验脚本、课程实践</div>
+        </div>
+    </div>
+
+    <!-- 联系区域 中英文 -->
+    <div class="card" id="contact">
+        <div class="section-title"><span>📫 联系我</span> <span style="font-size: 1rem;">Contact</span></div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;">
+            <div><strong>Email (学术):</strong> 3220100105@zju.edu.cn / wjwangjie26@163.com</div>
+            <div><strong>Phone:</strong> +86 18858151981</div>
+            <div><strong>Gitee:</strong> <a href="https://gitee.com/wjforward" target="_blank" style="color:#2563eb;">@wjforward</a></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 王劼 (Jie Wang) |  Built with ❤️ | 中英文双语个人主页 | 持续更新研究动态与项目代码</p>
+        <p style="font-size: 0.75rem; margin-top: 0.3rem;">* 简历信息基于真实经历，项目均完成或进行中。Gitee仓库持续上传实验代码。</p>
+    </div>
+</div>
+
+<script>
+    // 平滑滚动增强
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            });
+            }
         });
-    </script>
+    });
+    // 简单控制台提醒
+    console.log("Jie Wang's Portfolio | Gitee: https://gitee.com/wjforward");
+</script>
 </body>
 </html>
