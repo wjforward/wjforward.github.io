@@ -196,6 +196,56 @@
             justify-content: center;
             margin-top: 0.5rem;
         }
+        /* ======== 导航滚动高亮 ======== */
+        .nav-links a.active {
+            color: #2563eb;
+            position: relative;
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #2563eb;
+            border-radius: 2px;
+        }
+
+        /* ======== 回到顶部按钮 ======== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+            /* 初始隐藏：透明 + 下移 */
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
         @media (max-width: 700px) {
             .nav-container {
                 flex-direction: column;
@@ -520,7 +570,9 @@
 </div>
 
 <script>
-    // 平滑滚动增强
+    // ============================================================
+    //  知识点1: 平滑滚动 (点击导航链接时平滑滚到对应区域)
+    // ============================================================
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -533,7 +585,59 @@
             }
         });
     });
+
+    // ============================================================
+    //  知识点2: IntersectionObserver — 监听哪个 section 在视口中
+    //  MDN: https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver
+    //
+    //  rootMargin: '-30% 0px -50% 0px'
+    //   → 把视口上边往下压 30%，下边往上提 50%
+    //   → 实际"检测线"是视口从上往下 30%~50% 这一段窄带
+    //   → 哪个 section 跨过这条窄带，哪个就是"当前区域"
+    // ============================================================
+    const sections = document.querySelectorAll('.card[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, {
+        rootMargin: '-30% 0px -50% 0px',
+        threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
+
+    // ============================================================
+    //  知识点3: scroll 事件 + classList 控制回到顶部按钮显隐
+    //  滚动超过 500px 时加 .visible（渐显），否则移除（渐隐）
+    // ============================================================
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     console.log("Jie Wang's Portfolio | Bilingual (EN primary) | Gitee: https://gitee.com/wjforward");
 </script>
+
+<!-- 回到顶部按钮 -->
+<button class="back-to-top" id="backToTop" title="回到顶部 / Back to Top">↑</button>
 </body>
 </html>
